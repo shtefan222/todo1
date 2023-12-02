@@ -7,11 +7,11 @@ import java.util.List;
 
 
 public interface ArticleService {
-    public List<Article> getAllArticles();
+    List<Article> getAllArticles();
 
-    public Article getArticleById(Long id);
+    Article getArticleById(Long id);
 
-    public Article createArticle(Article article);
+    Article createArticle(Article article);
 
-    public void deleteArticleById(Long id) ;
+    void deleteArticleById(Long id) ;
 }

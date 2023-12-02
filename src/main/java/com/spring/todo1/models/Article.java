@@ -1,8 +1,6 @@
 package com.spring.todo1.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,5 +17,13 @@ public class Article {
     private String articleTitle;
 
     private String articleLink;
+
+
+    /**
+     *
+     */
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
 
 }

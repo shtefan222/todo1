@@ -27,10 +27,7 @@ public class TaskServiceImpl implements TaskService {
         return optionalTask.get();
     }
 
-//    @Override
-//    public Task findByTask(String task) {
-//        return null;
-//    }
+
 
     @Override
     public List<Task> findByCompletedTrue() {
@@ -52,9 +49,10 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.save(task);
     }
 
+
     @Override
-    public void deleteTask(Task task) {
-        taskRepository.delete(task);
+    public void deleteTaskById(Long id) {
+        taskRepository.deleteById(id);
     }
 
     @Override

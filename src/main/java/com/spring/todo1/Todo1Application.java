@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * - search for tasks by id
  * - adding, updating and deleting articles
  * - output of all articles
+ * - add html with thymeleaf, and now we can create and delete task in browser
  * It is planned to add:
  * - a habit tracker that will allow you to mark whether a task has been completed or not every day
  * - tags, so that when creating a task or habit, articles are automatically pulled to this task or habit

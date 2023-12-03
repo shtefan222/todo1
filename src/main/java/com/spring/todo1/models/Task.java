@@ -4,14 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.time.Instant;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Task {
@@ -21,7 +21,10 @@ public class Task {
 
     private String task;
 
-    private boolean completed;
+    private Instant createdAt;
+    private Instant updatedAt;
+
+    private Boolean completed;
     /**
      * When we create task, we can add several articles to it that contain the necessary information
      * for its successful completion
@@ -29,6 +32,10 @@ public class Task {
     @OneToMany(mappedBy = "task")
     private List<Article> articleList;
 
-
+    @Override
+    public String toString() {
+        return String.format("Task{id=%d, description='%s', isComplete='%s', createdAt='%s', updatedAt='%s'}",
+                id, task, completed, createdAt, updatedAt);
+    }
 
 }

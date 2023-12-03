@@ -12,6 +12,8 @@ public interface TaskService {
     List<Task> findByCompletedFalse();
     List<Task> findAllTasks();
 
+    public Iterable<Task> getAll();
+
     Task createNewTask(Task task);
 
     void deleteTaskById(Long id);

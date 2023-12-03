@@ -5,6 +5,7 @@ import com.spring.todo1.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +46,16 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public Iterable<Task> getAll() {
+        return taskRepository.findAll();
+    }
+
+    @Override
     public Task createNewTask(Task task) {
+        if (task.getId() == null) {
+            task.setCreatedAt(Instant.now());
+        }
+        task.setUpdatedAt(Instant.now());
         return taskRepository.save(task);
     }
 

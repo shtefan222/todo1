@@ -1,9 +1,6 @@
 package com.spring.todo1.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.Instant;
@@ -25,6 +22,10 @@ public class Task {
     private Instant updatedAt;
 
     private Boolean completed;
+
+
+    @ManyToOne
+    private TodoUser todoUser;
     /**
      * When we create task, we can add several articles to it that contain the necessary information
      * for its successful completion

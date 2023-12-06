@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+    <!-- Посилання на стилі CSS, наприклад, Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>User Details</h1>
+    <h2 th:text="${user.username}"></h2>
+
+    <!-- Виведення списку завдань -->
+    <h3>Tasks:</h3>
+    <table class="table">
+        <!-- Вставте код Thymeleaf для виведення списку завдань -->
+        <tbody>
+        <tr th:each="task : ${user.tasks}">
+            <td th:text="${task.id}"></td>
+            <td th:text="${task.task}"></td>
+            <td th:text="${task.createdAt}"></td>
+            <td th:text="${task.updatedAt}"></td>
+            <td th:text="${task.completed} ? 'Yes' : 'No'"></td>
+            <td>
+                <a th:href="@{'/deleteTask/' + ${task.id}}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Виведення списку статей -->
+    <h3>Articles:</h3>
+    <table class="table">
+        <!-- Вставте код Thymeleaf для виведення списку статей -->
+        <tbody>
+        <tr th:each="article : ${user.articles}">
+            <td th:text="${article.id}"></td>
+            <td th:text="${article.articleTitle}"></td>
+            <td th:text="${article.articleLink}"></td>
+            <td>
+                <a th:href="@{'/deleteArticle/' + ${article.id}}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

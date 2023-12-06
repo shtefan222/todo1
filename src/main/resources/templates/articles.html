@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <!-- Вставте посилання на ваші стилі CSS, наприклад, Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Article List</h1>
+
+    <!-- Додане посилання на сторінку index -->
+    <div class="mt-3">
+        <p><a href="/">Go to Index</a></p>
+    </div>
+
+    <!-- Форма для додавання статті -->
+    <form th:action="@{/addArticle}" method="post" th:object="${newArticle}">
+        <div class="form-group">
+            <label for="articleTitle">Article Title:</label>
+            <input type="text" class="form-control" id="articleTitle" name="articleTitle" placeholder="Enter article title" required>
+        </div>
+        <div class="form-group">
+            <label for="articleLink">Article Link:</label>
+            <input type="text" class="form-control" id="articleLink" name="articleLink" placeholder="Enter article link" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Article</button>
+    </form>
+
+    <hr>
+
+    <!-- Виведення списку статей -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Article Title</th>
+            <th>Article Link</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Вставте код Thymeleaf для виведення списку статей -->
+        <tr th:each="article : ${articles}">
+            <td th:text="${article.id}"></td>
+            <td th:text="${article.articleTitle}"></td>
+            <td th:text="${article.articleLink}"></td>
+            <td>
+                <a th:href="@{'/deleteArticle/' + ${article.id}}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

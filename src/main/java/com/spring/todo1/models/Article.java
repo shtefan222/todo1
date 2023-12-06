@@ -18,6 +18,9 @@ public class Article {
 
     private String articleLink;
 
+    @ManyToOne
+    private TodoUser todoUser;
+
 
     /**
      *

@@ -32,6 +32,8 @@ public class TaskController {
         return modelAndView;
     }
 
+
+
     /**
      * Returning a list of all tasks in JSON format (via @ResponseBody)
      */

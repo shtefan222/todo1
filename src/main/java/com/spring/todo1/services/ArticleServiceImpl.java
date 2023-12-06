@@ -1,6 +1,7 @@
 package com.spring.todo1.services;
 
 import com.spring.todo1.models.Article;
+import com.spring.todo1.models.Task;
 import com.spring.todo1.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,11 @@ public class ArticleServiceImpl implements ArticleService{
     public Article createArticle(Article article) {
         return articleRepository.save(article);
 
+    }
+
+    @Override
+    public Iterable<Article> getAll() {
+        return articleRepository.findAll();
     }
 
     @Override

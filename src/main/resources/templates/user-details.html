@@ -3,43 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>User Details</title>
-    <!-- Посилання на стилі CSS, наприклад, Bootstrap -->
+    <!-- Посилання на ваші стилі CSS, наприклад, Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container mt-5">
     <h1>User Details</h1>
-    <h2 th:text="${user.username}"></h2>
 
-    <!-- Виведення списку завдань -->
-    <h3>Tasks:</h3>
+    <!-- Кнопка для переходу на додавання нового користувача -->
+    <div class="mt-3">
+        <p><a href="/addUser">Add User</a></p>
+    </div>
+
+    <!-- Виведення списку користувачів -->
     <table class="table">
-        <!-- Вставте код Thymeleaf для виведення списку завдань -->
-        <tbody>
-        <tr th:each="task : ${user.tasks}">
-            <td th:text="${task.id}"></td>
-            <td th:text="${task.task}"></td>
-            <td th:text="${task.createdAt}"></td>
-            <td th:text="${task.updatedAt}"></td>
-            <td th:text="${task.completed} ? 'Yes' : 'No'"></td>
-            <td>
-                <a th:href="@{'/deleteTask/' + ${task.id}}" class="btn btn-danger btn-sm">Delete</a>
-            </td>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Tasks</th>
+            <th>Articles</th>
         </tr>
-        </tbody>
-    </table>
-
-    <!-- Виведення списку статей -->
-    <h3>Articles:</h3>
-    <table class="table">
-        <!-- Вставте код Thymeleaf для виведення списку статей -->
+        </thead>
         <tbody>
-        <tr th:each="article : ${user.articles}">
-            <td th:text="${article.id}"></td>
-            <td th:text="${article.articleTitle}"></td>
-            <td th:text="${article.articleLink}"></td>
+        <!-- Вставте код Thymeleaf для виведення списку користувачів -->
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
             <td>
-                <a th:href="@{'/deleteArticle/' + ${article.id}}" class="btn btn-danger btn-sm">Delete</a>
+                <ul>
+                    <!-- Виведення списку завдань для кожного користувача -->
+                    <li th:each="task : ${user.tasks}" th:text="${task.task}"></li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <!-- Виведення списку статей для кожного користувача -->
+                    <li th:each="article : ${user.articles}" th:text="${article.articleTitle}"></li>
+                </ul>
             </td>
         </tr>
         </tbody>

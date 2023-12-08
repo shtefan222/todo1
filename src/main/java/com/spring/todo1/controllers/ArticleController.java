@@ -21,7 +21,12 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-
+    /**
+     *Retrieves all articles from the database using the ArticleService and adds them to the ModelAndView.
+     *  * The ModelAndView is then returned to render the 'articles' template, passing the articles data to the view.
+     * @return ModelAndView object containing the 'articles' template
+     * and the list of articles retrieved from the database
+     */
     @GetMapping("/articles")
     public ModelAndView articles() {
         ModelAndView modelAndView = new ModelAndView("articles");
@@ -40,22 +45,23 @@ public class ArticleController {
      * @return List of all articles
      */
 
-//    @GetMapping("/all")
-//    @ResponseBody
-//    public List<Article> getAllArticles() {
-//        return articleService.getAllArticles();
-//    }
+    @GetMapping("/articles/all")
+    @ResponseBody
+    public List<Article> getAllArticles() {
+        return articleService.getAllArticles();
+    }
 //
 //
-//    /**
-//     * Create new article
-//     * @return new article
-//     */
-//    @PostMapping("/create")
-//    public ResponseEntity<Article> addArticle(@RequestBody Article article) {
-//        articleService.createArticle(article);
-//        return new ResponseEntity<>(article, HttpStatus.CREATED);
-//    }
+    /**
+     * Create new article
+     * @return new article
+     */
+    @PostMapping("/articles/create")
+    @ResponseBody
+    public ResponseEntity<Article> addArticlePost(@RequestBody Article article) {
+        articleService.createArticle(article);
+        return new ResponseEntity<>(article, HttpStatus.CREATED);
+    }
 //
     /**
      * Show article by id

@@ -1,7 +1,9 @@
 package com.spring.todo1.controllers;
 
+import com.spring.todo1.models.CreateUserRequest;
 import com.spring.todo1.models.TodoUser;
 import com.spring.todo1.services.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +22,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/userS")
+    @GetMapping("/users")
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("user-details");
         modelAndView.addObject("user", userService.getAll());
@@ -33,9 +35,17 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/users/create")
+    @PostMapping("/users/create-from-web")
     @ResponseBody
     public TodoUser createUser(@RequestBody TodoUser user) {
+
         return userService.createNewUser(user);
+    }
+
+    @PostMapping("/users/create")
+    @ResponseBody
+    public ResponseEntity<Void> createUser(@RequestBody CreateUserRequest request) {
+        userService.createUserWithArticleAndTask(request.getUsername(), request.getTask(), request.getArticleTitle(), request.getArticleLink());
+        return ResponseEntity.ok().build();
     }
 }

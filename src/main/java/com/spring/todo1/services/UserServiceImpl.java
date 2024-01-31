@@ -6,6 +6,7 @@ import com.spring.todo1.models.TodoUser;
 import com.spring.todo1.repositories.ArticleRepository;
 import com.spring.todo1.repositories.TaskRepository;
 import com.spring.todo1.repositories.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,7 @@ public class UserServiceImpl implements UserService{
         return userRepository.save(user);
     }
 
+    @Transactional
     public void createUserWithArticleAndTask(String username, String task, String articleTitle, String articleLink) {
         TodoUser user = new TodoUser();
         user.setUsername(username);

@@ -2,6 +2,7 @@ package com.spring.todo1.controllers;
 
 import com.spring.todo1.models.Article;
 import com.spring.todo1.services.ArticleService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@Controller
+@RestController
+@Slf4j
 //@RequestMapping("/articles")
 public class ArticleController {
     private final ArticleService articleService;
@@ -37,7 +39,8 @@ public class ArticleController {
     @PostMapping("/addArticle")
     public String addArticle(@ModelAttribute("newArticle") Article newArticle) {
         articleService.createArticle(newArticle);
-        return "redirect:/articles";
+        log.info("addArticle {}", newArticle);
+    return "redirect:/articles";
     }
 //
     /**
@@ -57,10 +60,12 @@ public class ArticleController {
      * @return new article
      */
     @PostMapping("/articles/create")
-    @ResponseBody
-    public ResponseEntity<Article> addArticlePost(@RequestBody Article article) {
+    //@ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public Article addArticlePost(@RequestBody Article article) {
         articleService.createArticle(article);
-        return new ResponseEntity<>(article, HttpStatus.CREATED);
+        log.info("addArticle {}", article);
+        return article;
     }
 //
     /**

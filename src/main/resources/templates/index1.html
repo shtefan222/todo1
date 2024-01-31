@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks and Articles</title>
+    <!-- Посилання на стилі CSS, наприклад, Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Стилі для кнопок */
+        .main-buttons {
+            margin-top: 50px;
+        }
+
+        .main-buttons .btn {
+            margin: 10px;
+            font-size: 24px;
+            padding: 20px 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container text-center">
+    <h1>Welcome to Tasks and Articles</h1>
+    <div class="main-buttons">
+        <!-- Посилання на сторінку завдань -->
+        <a href="/tasks" class="btn btn-primary">Tasks</a>
+        <!-- Посилання на сторінку статей -->
+        <a href="/articles" class="btn btn-success">Articles</a>
+    </div>
+</div>
+</body>
+</html>

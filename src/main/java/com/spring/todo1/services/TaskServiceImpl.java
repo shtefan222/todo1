@@ -69,4 +69,10 @@ public class TaskServiceImpl implements TaskService {
     public Task updateTask(Task task) {
         return taskRepository.save(task);
     }
+
+
+
+    public List<Task> getSortedTasks() {
+        return taskRepository.findAllByOrderByCreatedAtAsc();
+    }
 }

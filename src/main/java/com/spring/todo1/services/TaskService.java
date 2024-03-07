@@ -19,5 +19,5 @@ public interface TaskService {
     void deleteTaskById(Long id);
     Task updateTask(Task task);
 
-
+    public List<Task> getSortedTasks();
 }

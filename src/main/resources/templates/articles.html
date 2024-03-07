@@ -38,6 +38,8 @@
             <th>Article Title</th>
             <th>Article Link</th>
             <th>Actions</th>
+            <th>Article Type</th>
+            <th>Date</th>
         </tr>
         </thead>
         <tbody>
@@ -49,6 +51,9 @@
             <td>
                 <a th:href="@{'/deleteArticle/' + ${article.id}}" class="btn btn-danger btn-sm">Delete</a>
             </td>
+            <!-- Add the following line to display the articleType field -->
+            <td th:text="${article.articleType}"></td>
+            <td th:text="${article.date}"></td>
         </tr>
         </tbody>
     </table>

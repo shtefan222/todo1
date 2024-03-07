@@ -2,6 +2,7 @@ package com.spring.todo1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 
 /**
@@ -18,10 +19,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * - basic logic for tasks: the ability to create categories, prioritize and sort.
  */
 @SpringBootApplication
+@ConfigurationPropertiesScan
 public class Todo1Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Todo1Application.class, args);
+		var context = SpringApplication.run(Todo1Application.class, args);
+		System.out.println(context.getBeanDefinitionCount());
 	}
 
 }

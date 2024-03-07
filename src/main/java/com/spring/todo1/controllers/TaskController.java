@@ -33,7 +33,6 @@ public class TaskController {
     }
 
 
-
     /**
      * Returning a list of all tasks in JSON format (via @ResponseBody)
      */
@@ -61,7 +60,7 @@ public class TaskController {
     }
 
     /**
-     *  Deleting a task by its identifier through the service
+     * Deleting a task by its identifier through the service
      */
     @GetMapping("/deleteTask/{id}")
     public String deleteTask(@PathVariable Long id) {
@@ -137,5 +136,10 @@ public class TaskController {
         taskService.deleteTaskById(id);
     }
 
-
+    // New
+    @GetMapping("tasks/sorted")
+    @ResponseBody
+    public List<Task> getSortedTasks() {
+        return taskService.getSortedTasks();
+    }
 }

@@ -9,5 +9,6 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
     List<Task> findByCompletedTrue();
     List<Task> findByCompletedFalse();
 
+    List<Task> findAllByOrderByCreatedAtAsc();
 
 }
